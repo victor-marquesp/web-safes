@@ -36,13 +36,13 @@
                     <h2 class="h5 mb-0">Cofrinhos com este mascote</h2>
                 </div>
                 <ul class="list-group list-group-flush">
-                    @forelse ($animal->safers as $safer)
+                    @forelse ($animal->safes as $safe)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
-                                <strong>{{ $safer->name }}</strong>
-                                <small class="text-muted d-block">R$ {{ number_format($safer->savings, 2, ',', '.') }}</small>
+                                <strong>{{ $safe->name }}</strong>
+                                <small class="text-muted d-block">R$ {{ number_format($safe->savings, 2, ',', '.') }}</small>
                             </div>
-                            <a href="{{ route('safers.show', $safer->id) }}" class="btn btn-sm btn-outline-primary">
+                            <a href="{{ route('safes.show', $safe->id) }}" class="btn btn-sm btn-outline-primary">
                                 Ver Cofrinho
                             </a>
                         </li>

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnimalController;
-use App\Http\Controllers\SaferController;
+use App\Http\Controllers\SafeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -9,4 +9,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/animals', AnimalController::class);
-Route::resource('/safers', SaferController::class);
+Route::resource('/safes', SafeController::class);

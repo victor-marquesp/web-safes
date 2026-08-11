@@ -7,7 +7,7 @@
 
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 
-    <title>{{ $title ?? 'WebSafers' }}</title>
+    <title>{{ $title ?? 'WebSafes' }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

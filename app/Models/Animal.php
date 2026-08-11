@@ -17,7 +17,7 @@ class Animal extends Model
         'icon_path'
     ];
 
-    public function safers() : HasMany {
-        return $this->hasMany(Safer::class);
+    public function safes() : HasMany {
+        return $this->hasMany(Safe::class);
     }
 }

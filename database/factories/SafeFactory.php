@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Safer;
+use App\Models\Safe;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Safer>
+ * @extends Factory<Safe>
  */
-class SaferFactory extends Factory
+class SafeFactory extends Factory
 {
     /**
      * Define the model's default state.

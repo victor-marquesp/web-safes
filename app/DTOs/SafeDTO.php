@@ -2,7 +2,7 @@
 
 namespace App\DTOs;
 
-readonly class SaferDTO {
+readonly class SafeDTO {
 
     private function __construct(
         public string $name,

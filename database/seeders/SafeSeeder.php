@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SaferSeeder extends Seeder
+class SafeSeeder extends Seeder
 {
 
     public function run(): void
@@ -18,6 +18,6 @@ class SaferSeeder extends Seeder
             ['name' => 'Regular Safe', 'animal_id' => 1, 'savings' => 0, 'description' => null]
         ];
 
-        DB::table('safers')->insert($data);
+        DB::table('safes')->insert($data);
     }
 }

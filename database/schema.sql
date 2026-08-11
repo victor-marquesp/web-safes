@@ -2,12 +2,6 @@
 -- MVP
 -- ============================================
 
-CREATE TABLE animals (
-    id INT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    description TEXT,
-    icon_path VARCHAR(255)
-);
 
 CREATE TABLE safers (
     id INT PRIMARY KEY,
@@ -16,23 +10,6 @@ CREATE TABLE safers (
     name VARCHAR(255),
     description TEXT,
     FOREIGN KEY (animal_id) REFERENCES animals(id)
-);
-
-INSERT INTO animals (id, name) VALUES 
-(1, 'piggy');
-
-INSERT INTO safers (id, animal_id, savings) VALUES 
-(1, 1, 0);
-
--- ============================================
--- FINAL
--- ============================================
-
-CREATE TABLE animals (
-    id INT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    description TEXT,
-    icon_path VARCHAR(255)
 );
 
 CREATE TABLE currencies (
@@ -51,7 +28,15 @@ CREATE TABLE coins (
     FOREIGN KEY (currency_id) REFERENCES currencies(id)
 );
 
-CREATE TABLE safers (
+CREATE TABLE animals (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    icon_path VARCHAR(255)
+);
+
+
+CREATE TABLE safes (
     id INT PRIMARY KEY,
     animal_id INT NOT NULL,
     currency_id INT NOT NULL,

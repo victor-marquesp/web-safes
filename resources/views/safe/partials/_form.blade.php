@@ -1,4 +1,4 @@
-@props(['safer' => null, 'animals'])
+@props(['safe' => null, 'animals'])
 
 <div class="mb-3">
     <label for="name" class="form-label">Nome do Cofrinho</label>
@@ -7,7 +7,7 @@
         name="name" 
         id="name" 
         class="form-control @error('name') is-invalid @enderror" 
-        value="{{ old('name', $safer->name ?? '') }}" 
+        value="{{ old('name', $safe->name ?? '') }}" 
         required
     >
     @error('name')
@@ -23,7 +23,7 @@
         name="savings" 
         id="savings" 
         class="form-control @error('savings') is-invalid @enderror" 
-        value="{{ old('savings', $safer->savings ?? '0.00') }}" 
+        value="{{ old('savings', $safe->savings ?? '0.00') }}" 
         required
     >
     @error('savings')
@@ -34,13 +34,13 @@
 <div class="mb-3">
     <label for="animal_id" class="form-label">Mascote / Animal</label>
     <select name="animal_id" id="animal_id" class="form-select @error('animal_id') is-invalid @enderror" required>
-        <option value="" disabled {{ old('animal_id', $safer->animal_id ?? '') ? '' : 'selected' }}>
+        <option value="" disabled {{ old('animal_id', $safe->animal_id ?? '') ? '' : 'selected' }}>
             Selecione um animal...
         </option>
         @foreach ($animals as $animal)
             <option 
                 value="{{ $animal->id }}" 
-                {{ old('animal_id', $safer->animal_id ?? '') == $animal->id ? 'selected' : '' }}
+                {{ old('animal_id', $safe->animal_id ?? '') == $animal->id ? 'selected' : '' }}
             >
                 {{ $animal->name }}
             </option>
@@ -58,7 +58,7 @@
         id="description" 
         rows="3" 
         class="form-control @error('description') is-invalid @enderror"
-    >{{ old('description', $safer->description ?? '') }}</textarea>
+    >{{ old('description', $safe->description ?? '') }}</textarea>
     @error('description')
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror

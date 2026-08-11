@@ -9,14 +9,14 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('safers.store') }}" method="POST">
+                    <form action="{{ route('safes.store') }}" method="POST">
                         @csrf
 
                         {{-- Inclui os campos reutilizáveis --}}
-                        @include('safer.partials._form', ['animals' => $animals])
+                        @include('safe.partials._form', ['animals' => $animals])
 
                         <div class="d-flex justify-content-between align-items-center mt-4">
-                            <a href="{{ route('safers.index') }}" class="btn btn-outline-secondary">Cancelar</a>
+                            <a href="{{ route('safes.index') }}" class="btn btn-outline-secondary">Cancelar</a>
                             <button type="submit" class="btn btn-primary">Salvar Cofrinho</button>
                         </div>
                     </form>

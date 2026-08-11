@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <x-slot:title>Editar {{ $safer->name }}</x-slot>
+    <x-slot:title>Editar {{ $safe->name }}</x-slot>
 
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -9,15 +9,15 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('safers.update', $safer->id) }}" method="POST">
+                    <form action="{{ route('safes.update', $safe->id) }}" method="POST">
                         @csrf
                         @method('PUT')
 
                         {{-- Inclui os campos reutilizáveis preenchidos --}}
-                        @include('safer.partials._form', ['safer' => $safer])
+                        @include('safe.partials._form', ['safer' => $safe])
 
                         <div class="d-flex justify-content-between align-items-center mt-4">
-                            <a href="{{ route('safers.index') }}" class="btn btn-outline-secondary">Cancelar</a>
+                            <a href="{{ route('safes.index') }}" class="btn btn-outline-secondary">Cancelar</a>
                             <button type="submit" class="btn btn-primary">Atualizar Cofrinho</button>
                         </div>
                     </form>

@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateSaferRequest extends FormRequest {
+class StoreSafeRequest extends FormRequest {
 
     public function authorize() : bool {
         return true;
@@ -22,7 +22,7 @@ class UpdateSaferRequest extends FormRequest {
             'savings' => ['required', 'integer', 'min:0'],
             'description' => ['nullable', 'string', 'max:255']
         ];
-
+        
     }
-    
+
 }

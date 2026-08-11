@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
-use App\DTOs\SaferDTO;
-use App\Models\Safer;
+use App\DTOs\SafeDTO;
+use App\Models\Safe;
 
-class SaferService {
+class SafeService {
 
-    public function create(SaferDTO $dto) {
+    public function create(SafeDTO $dto) {
 
-        return Safer::create([
+        return Safe::create([
             'name' => $dto->name,
             'animal_id' => $dto->animalId,
             'savings' => $dto->savings,
@@ -18,22 +18,22 @@ class SaferService {
 
     }
 
-    public function update(Safer $safer, SaferDTO $dto) {
+    public function update(Safe $safe, SafeDTO $dto) {
 
-        $safer->update([
+        $safe->update([
             'name' => $dto->name,
             'animal_id' => $dto->animalId,
             'savings' => $dto->savings,
             'description' => $dto->description
         ]);
 
-        return $safer->refresh();
+        return $safe->refresh();
 
     }
 
-    public function delete(Safer $safer) {
+    public function delete(Safe $safe) {
 
-        $safer->delete();
+        $safe->delete();
 
     }
 

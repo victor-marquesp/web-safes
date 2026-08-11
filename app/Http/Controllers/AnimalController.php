@@ -2,64 +2,70 @@
 
 namespace App\Http\Controllers;
 
+use App\DTOs\AnimalDTO;
+use App\Http\Requests\StoreAnimalRequest;
+use App\Http\Requests\UpdateAnimalRequest;
 use App\Models\Animal;
-use Illuminate\Http\Request;
+use App\Services\AnimalService;
+use Illuminate\Support\Facades\Storage;
 
-class AnimalController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+class AnimalController extends Controller {
+
+    public function __construct(private AnimalService $animalService) {}
+
+    public function index() {
+
+        $animals = Animal::all();
+
+        return view('animal.index', compact('animals'));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function create() {
+
+        return view('animal.create');
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(StoreAnimalRequest $request) {
+
+        $dto = AnimalDTO::fromArray(
+            $request->validated()
+        );
+
+        $this->animalService->create($dto);
+
+        return redirect()->route('animals.index')->with('success', 'Animal Created');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Animal $animal)
-    {
-        //
+    public function show(Animal $animal) {
+
+        return view('animal.show', compact('animal'));
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Animal $animal)
-    {
-        //
+    public function edit(Animal $animal) {
+
+        return view('animal.edit', compact('animal'));
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Animal $animal)
-    {
-        //
+    public function update(UpdateAnimalRequest $request, Animal $animal) {
+
+        $dto = AnimalDTO::fromArray(
+            $request->validated()
+        );
+
+        $this->animalService->update($animal, $dto);
+
+        return redirect()->route('animals.index')->with('success', 'Animal updated');
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Animal $animal)
     {
-        //
+        $this->animalService->delete($animal);
+
+        return redirect()->route('animals.index')->with('success', 'Animal deleted');
     }
 }

@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Animal;
 use App\Models\Safer;
 use Illuminate\Http\Request;
 
-class SaferController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+class SaferController extends Controller {
+
+    public function index() {
+        
+        $safers = Safer::all();
+
+        return view('safer.index', compact('safers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $animals = Animal::all();
+
+        return view('safer.create', compact('animals'));
     }
 
     /**
@@ -31,20 +30,14 @@ class SaferController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Safer $safer)
     {
-        //
+        return view('safer.show', compact('safer'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Safer $safer)
     {
-        //
+        return view('safer.edit', compact('safer'));
     }
 
     /**

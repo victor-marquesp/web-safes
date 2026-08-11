@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="{{ url('/') }}">
+            WebSafers
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            
+            {{-- Seções do Lado Esquerdo --}}
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('safers.index') }}">Cofrinhos</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

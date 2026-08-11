@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Storage;
 
 class AnimalController extends Controller {
 
-    public function __construct(private AnimalService $animalService) {}
+    public function __construct(
+        private AnimalService $animalService
+    ) {}
 
     public function index() {
 
@@ -56,7 +58,7 @@ class AnimalController extends Controller {
             $request->validated()
         );
 
-        $this->animalService->update($animal, $dto);
+        $this->animalService->update(animal: $animal, dto: $dto);
 
         return redirect()->route('animals.index')->with('success', 'Animal updated');
         

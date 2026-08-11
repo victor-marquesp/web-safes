@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Safer extends Model
 {
@@ -12,11 +13,12 @@ class Safer extends Model
 
     protected $fillable = [
         'name',
+        'animal_id',
         'savings',
         'description'
     ];
     
-    public function animal() {
+    public function animal() : BelongsTo {
         return $this->belongsTo(Animal::class);
     }
 }

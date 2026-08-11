@@ -9,4 +9,14 @@ class Safer extends Model
 {
     /** @use HasFactory<\Database\Factories\SaferFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'savings',
+        'description'
+    ];
+    
+    public function animal() {
+        return $this->belongsTo(Animal::class);
+    }
 }

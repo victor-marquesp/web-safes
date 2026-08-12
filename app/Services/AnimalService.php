@@ -21,19 +21,20 @@ class AnimalService {
     }
 
     public function update(Animal $animal, AnimalDTO $dto) : Animal {
-        
-        $data = [
-            'name' => $dto->name,
-            'description' => $dto->description,
-        ];
 
-        if ($dto->icon) {
+        $iconPath = $animal->icon_path;
+
+        if($dto->icon) {
             Storage::disk('public')->delete($animal->icon_path);
 
-            $data['icon_path'] = $dto->icon->store('animals', 'public');
+            $iconPath = $dto->icon->store('animals', 'public');
         }
 
-        $animal->update($data);
+        $animal->update([
+            'name' => $dto->name,
+            'description' => $dto->description,
+            'icon_path' => $iconPath
+        ]);
 
         return $animal->refresh();
     }

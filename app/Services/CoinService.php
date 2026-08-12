@@ -4,13 +4,16 @@ namespace App\Services;
 
 use App\DTOs\CoinDTO;
 use App\Models\Coin;
-use Illuminate\Support\Facades\Storage;
 
 class CoinService {
 
+    public function __construct(
+        private FileStorageService $fileStorageService
+    ) {}
+
     public function create(CoinDTO $dto) {
 
-        $iconPath = $dto->icon->store('coins', 'public');
+        $iconPath = $this->fileStorageService->store(file: $dto->icon, folder: 'coins', disk: 'public');
 
         return Coin::create([
             'name' => $dto->name,
@@ -26,9 +29,7 @@ class CoinService {
         $iconPath = $coin->icon_path;
 
         if($dto->icon) {
-            Storage::disk('public')->delete($coin->icon_path);
-
-            $iconPath = $dto->icon->store('coins', 'public');
+            $iconPath = $this->fileStorageService->update(path: $iconPath, disk: 'public', file: $dto->icon, folder: 'coins');
         }
 
         $coin->update([
@@ -43,7 +44,7 @@ class CoinService {
 
     public function delete(Coin $coin) : void {
 
-        Storage::disk('public')->delete($coin->icon_path);
+        $this->fileStorageService->delete(path: $coin->icon_path, disk: 'public');
 
         $coin->delete();
     }

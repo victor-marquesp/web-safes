@@ -4,13 +4,16 @@ namespace App\Services;
 
 use App\DTOs\CurrencyDTO;
 use App\Models\Currency;
-use Illuminate\Support\Facades\Storage;
 
 class CurrencyService {
 
+    public function __construct(
+        private FileStorageService $fileStorageService
+    ) {}
+
     public function create(CurrencyDTO $dto) : Currency {
 
-        $iconPath = $dto->icon->store('currencies', 'public');
+        $iconPath = $this->fileStorageService->store(file: $dto->icon, folder: 'currencies', disk: 'public');
 
         return Currency::create([
             'name' => $dto->name,
@@ -25,9 +28,9 @@ class CurrencyService {
         $iconPath = $currency->icon_path;
 
         if($dto->icon) {
-            Storage::disk('public')->delete($currency->icon_path);
 
-            $iconPath = $dto->icon->store('currencies', 'public');
+            $iconPath = $this->fileStorageService->update(path: $iconPath, disk: 'public', file: $dto->icon, folder: 'currencies');
+
         }
 
         $currency->update([
@@ -42,7 +45,7 @@ class CurrencyService {
 
     public function delete(Currency $currency) : void {
 
-        Storage::disk('public')->delete($currency->icon_path);
+        $this->fileStorageService->delete(path: $currency->icon_path, disk: 'public');
 
         $currency->delete();
     }

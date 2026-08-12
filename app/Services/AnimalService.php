@@ -2,16 +2,18 @@
 
 namespace App\Services;
 
-use App\DTOs\AnimalDTO;
 use App\Models\Animal;
-use Illuminate\Support\Facades\Storage;
+use App\DTOs\AnimalDTO;
 
 class AnimalService {
 
+    public function __construct(
+        private FileStorageService $fileStorageService
+    ) {}
+
     public function create(AnimalDTO $dto) : Animal {
 
-       
-        $iconPath = $dto->icon->store('animals', 'public');
+        $iconPath = $this->fileStorageService->store(file: $dto->icon, folder: 'animals', disk: 'public');
 
         return Animal::create([
             'name' => $dto->name,
@@ -25,9 +27,7 @@ class AnimalService {
         $iconPath = $animal->icon_path;
 
         if($dto->icon) {
-            Storage::disk('public')->delete($animal->icon_path);
-
-            $iconPath = $dto->icon->store('animals', 'public');
+            $iconPath = $this->fileStorageService->update(path: $iconPath, disk: 'public', file: $dto->icon, folder: 'animals');
         }
 
         $animal->update([
@@ -41,7 +41,7 @@ class AnimalService {
 
     public function delete(Animal $animal) : void {
 
-        Storage::disk('public')->delete($animal->icon_path);
+        $this->fileStorageService->delete(path: $animal->icon_path, disk: 'public');
 
         $animal->delete();
     }

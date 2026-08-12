@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+use Database\Seeders\DepositSeeder;
 use Database\Seeders\CurrencySeeder;
 use Database\Seeders\CoinSeeder;
 use Database\Seeders\AnimalSeeder;
@@ -28,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CoinSeeder::class);
         $this->call(AnimalSeeder::class);
         $this->call(SafeSeeder::class);
+        $this->call(DepositSeeder::class);
     }
 }

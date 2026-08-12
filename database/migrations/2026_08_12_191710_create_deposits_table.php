@@ -5,19 +5,17 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+ 
+    function up(): void {
 
-    public function up(): void
-    {
-
-        Schema::create('coins', function (Blueprint $table) {
+        Schema::create('deposits', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name', 50);
+            $table->foreignId('safe_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('coin_id')->nullable()->constrained()->nullOnDelete();
 
-            $table->foreignId('currency_id')->constrained()->cascadeOnDelete();
-
+            $table->unsignedInteger('quantity')->nullable();
             $table->unsignedBigInteger('value_cents');
-            $table->string('icon_path', 255);
             
             $table->timestamps();
         });
@@ -26,7 +24,7 @@ return new class extends Migration {
 
     public function down(): void {
 
-        Schema::dropIfExists('coins');
+        Schema::dropIfExists('deposits');
 
     }
 };

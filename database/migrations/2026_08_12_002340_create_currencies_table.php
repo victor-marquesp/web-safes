@@ -10,9 +10,12 @@ return new class extends Migration {
 
         Schema::create('currencies', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->max(100);
-            $table->string('description')->nullable()->max(255);
-            $table->string('icon_path');
+
+            $table->string('name', 100);
+
+            $table->string('description', 255)->nullable();
+            $table->string('icon_path', 255);
+
             $table->timestamps();
         });
 

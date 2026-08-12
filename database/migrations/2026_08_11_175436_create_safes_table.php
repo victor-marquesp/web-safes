@@ -10,11 +10,14 @@ return new class extends Migration {
 
         Schema::create('safes', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->max(100);
-            $table->foreignId('animal_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('currency_id')->constrained()->cascadeOnDelete();
-            $table->integer('savings');
+
+            $table->string('name', 100);
+
+            $table->foreignId('animal_id')->constrained()->restrictOnDelete();
+            $table->foreignId('currency_id')->constrained()->restrictOnDelete();
+            
             $table->string('description')->nullable()->max(255);
+
             $table->timestamps();
         });
         

@@ -10,9 +10,12 @@ return new class extends Migration {
 
         Schema::create('animals', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->max(50);
-            $table->string('description')->nullable()->max(255);
-            $table->string('icon_path')->max(255);
+
+            $table->string('name', 50)->unique();
+
+            $table->string('description', 255)->nullable();
+            $table->string('icon_path', 255);
+            
             $table->timestamps();
         });
 

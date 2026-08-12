@@ -6,8 +6,10 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-use Database\Seeders\SafeSeeder;
+use Database\Seeders\CurrencySeeder;
+use Database\Seeders\CoinSeeder;
 use Database\Seeders\AnimalSeeder;
+use Database\Seeders\SafeSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +24,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        $this->call(CurrencySeeder::class);
+        $this->call(CoinSeeder::class);
         $this->call(AnimalSeeder::class);
         $this->call(SafeSeeder::class);
     }

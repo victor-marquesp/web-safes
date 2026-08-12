@@ -30,6 +30,7 @@ class CurrencyController extends Controller {
             $request->validated()
         );
 
+
         $this->currencyService->create($dto);
 
         return redirect()->route('currencies.index')->with('success', 'Currency Created');

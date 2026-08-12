@@ -18,7 +18,7 @@ class StoreCoinRequest extends FormRequest {
     {
         return [
             'name' => ['required', 'string', 'max:50'],
-            'currency_id' => ['required', 'integer', 'exists:currency,id'],
+            'currency_id' => ['required', 'integer', 'exists:currencies,id'],
             'value_cents' => ['required', 'integer', 'min:0'],
             'icon' => ['required', 'image', 'max:10240']
         ];

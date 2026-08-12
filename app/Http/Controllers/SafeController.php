@@ -6,6 +6,7 @@ use App\DTOs\SafeDTO;
 use App\Http\Requests\StoreSafeRequest;
 use App\Http\Requests\UpdateSafeRequest;
 use App\Models\Animal;
+use App\Models\Currency;
 use App\Models\Safe;
 use App\Services\SafeService;
 
@@ -25,8 +26,9 @@ class SafeController extends Controller {
     public function create() {
 
         $animals = Animal::all();
+        $currencies = Currency::all();
 
-        return view('safe.create', compact('animals'));
+        return view('safe.create', compact(['animals', 'currencies']));
     }
 
     public function store(StoreSafeRequest $request) {
@@ -50,8 +52,9 @@ class SafeController extends Controller {
     public function edit(Safe $safe) {
 
         $animals = Animal::all();
+        $currencies = Currency::all();
 
-        return view('safe.edit', compact(['safe', 'animals']));
+        return view('safe.edit', compact(['safe', 'animals', 'currencies']));
 
     }
 

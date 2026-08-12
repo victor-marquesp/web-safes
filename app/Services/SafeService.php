@@ -12,6 +12,7 @@ class SafeService {
         return Safe::create([
             'name' => $dto->name,
             'animal_id' => $dto->animalId,
+            'currency_id' => $dto->currencyId,
             'savings' => $dto->savings,
             'description' => $dto->description
         ]);

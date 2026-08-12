@@ -13,9 +13,9 @@ class SafeSeeder extends Seeder
     {
 
         $data = [
-            ['name' => 'Piggy Safe', 'animal_id' => 2, 'currency_id' => 1, 'savings' => 500, 'description' => 'My First Safe!!!'],
-            ['name' => 'Turtle Safe', 'animal_id' => 3, 'currency_id' => 1, 'savings' => 5000, 'description' => null],
-            ['name' => 'Regular Safe', 'animal_id' => 1, 'currency_id' => 2, 'savings' => 0, 'description' => null]
+            ['name' => 'Piggy Safe', 'animal_id' => 2, 'currency_id' => 1, 'savings' => 500, 'description' => 'My First Safe!!!', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Turtle Safe', 'animal_id' => 3, 'currency_id' => 1, 'savings' => 5000, 'description' => null, 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Regular Safe', 'animal_id' => 1, 'currency_id' => 2, 'savings' => 0, 'description' => null, 'created_at' => now(), 'updated_at' => now()]
         ];
 
         DB::table('safes')->insert($data);

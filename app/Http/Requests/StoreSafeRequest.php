@@ -19,6 +19,7 @@ class StoreSafeRequest extends FormRequest {
         return [
             'name' => ['required', 'string', 'max:100'],
             'animal_id' => ['required', 'integer', 'exists:animals,id'],
+            'currency_id' => ['required', 'integer', 'exists:currencies,id'],
             'savings' => ['required', 'integer', 'min:0'],
             'description' => ['nullable', 'string', 'max:255']
         ];

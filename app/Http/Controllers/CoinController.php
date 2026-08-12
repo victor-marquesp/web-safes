@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coin;
+use App\Models\Currency;
 use App\Services\CoinService;
 use App\DTOs\CoinDTO;
 use App\Http\Requests\StoreCoinRequest;
@@ -16,12 +17,15 @@ class CoinController extends Controller {
 
     public function index() {
         $coins = Coin::all();
+        $currencies = Currency::all();
 
-        return view('coin.index', compact('coins'));
+        return view('coin.index', compact(['coins', 'currencies']));
     }
 
     public function create() {
-        return view('coin.create');
+        $currencies = Currency::all();
+
+        return view('coin.create', compact('currencies'));
     }
 
     public function store(StoreCoinRequest $request) {
@@ -40,7 +44,9 @@ class CoinController extends Controller {
     }
 
     public function edit(Coin $coin) {
-        return view('coin.edit', compact('coin'));
+        $currencies = Currency::all();
+
+        return view('coin.edit', compact(['coin', 'currencies']));
     }
 
     public function update(UpdateCoinRequest $request, Coin $coin) {

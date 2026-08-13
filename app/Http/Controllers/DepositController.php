@@ -18,7 +18,7 @@ class DepositController extends Controller {
     
         $deposits = $safe->deposits()->latest()->get();
 
-        return view('deposit.history', compact('deposits'));
+        return view('deposit.history', compact('safe', 'deposits'));
     }
 
     public function create(Safe $safe) {
@@ -35,10 +35,10 @@ class DepositController extends Controller {
 
         $this->depositService->store(safe: $safe, dto: $dto);
 
-        return redirect()->route('deposit.history', $safe)->with('success', 'Deposit Made');
+        return redirect()->route('safes.history', $safe)->with('success', 'Deposit Made');
     }
 
-    public function show(Deposit $deposit) {
+    public function show(Safe $safe, Deposit $deposit) {
 
         return view('deposit.show', compact('deposit'));
 

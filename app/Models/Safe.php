@@ -16,7 +16,6 @@ class Safe extends Model
         'name',
         'animal_id',
         'currency_id',
-        'savings',
         'description'
     ];
     

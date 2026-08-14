@@ -13,7 +13,6 @@ class SafeService {
             'name' => $dto->name,
             'animal_id' => $dto->animalId,
             'currency_id' => $dto->currencyId,
-            'savings' => $dto->savings,
             'description' => $dto->description
         ]);
 
@@ -24,7 +23,6 @@ class SafeService {
         $safe->update([
             'name' => $dto->name,
             'animal_id' => $dto->animalId,
-            'savings' => $dto->savings,
             'description' => $dto->description
         ]);
 

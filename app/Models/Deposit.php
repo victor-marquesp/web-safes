@@ -18,4 +18,8 @@ class Deposit extends Model {
         return $this->belongsTo(Safe::class);
     }
 
+    public function coin(): BelongsTo {
+        return $this->belongsTo(Coin::class);
+    }
+
 }

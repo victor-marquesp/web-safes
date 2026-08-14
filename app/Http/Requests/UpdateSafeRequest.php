@@ -19,7 +19,6 @@ class UpdateSafeRequest extends FormRequest {
         return [
             'name' => ['required', 'string', 'max:100'],
             'animal_id' => ['required', 'integer', 'exists:animals,id'],
-            'savings' => ['required', 'integer', 'min:0'],
             'description' => ['nullable', 'string', 'max:255']
         ];
 

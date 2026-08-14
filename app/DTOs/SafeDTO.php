@@ -8,7 +8,6 @@ readonly class SafeDTO {
         public string $name,
         public int $animalId,
         public ?int $currencyId,
-        public int $savings,
         public ?string $description
     ) {}
 
@@ -18,7 +17,6 @@ readonly class SafeDTO {
             name: $data['name'],
             animalId: $data['animal_id'],
             currencyId: $data['currency_id'] ?? null,
-            savings: $data['savings'],
             description: $data['description'] ?? null
         );
 

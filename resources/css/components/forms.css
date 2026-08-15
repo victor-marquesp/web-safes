@@ -1,0 +1,17 @@
+
+.form-control,
+.form-select {
+    border-radius: var(--ws-radius-sm);
+    border-color: var(--ws-border);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--ws-terracotta);
+    box-shadow: 0 0 0 0.2rem var(--ws-terracotta-light);
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--ws-ink);
+}

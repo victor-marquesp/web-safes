@@ -1,7 +1,48 @@
 <x-layouts.app>
 
-    <x-slot:title>Welcome</x-slot>
+    <x-slot:title>Bem-vindo</x-slot>
 
-    <h1 class="header">Bem vindo!</h1>
+    <div class="ws-hero">
+        <div class="ws-hero__mark" >
+                <img src="{{ asset('favicon.png') }}" alt="WEB-SAFES"></i>
+        </div>
 
-</x-layout.app>
+        <h1 class="ws-hero__title">Bem-vindo ao WebSafes</h1>
+
+        <p class="ws-hero__subtitle">
+            Crie seu cofrinho, escolha como ele será representado e comece a guardar dinheiro,
+            um depósito de cada vez.
+        </p>
+
+        <a href="{{ route('safes.index') }}" class="btn btn-primary btn-lg px-4">
+            <i class="bi bi-arrow-right-circle me-1" aria-hidden="true"></i> Ver meus cofrinhos
+        </a>
+
+        <div class="ws-hero__features">
+            <div class="ws-hero__feature">
+                <i class="bi bi-piggy-bank" aria-hidden="true"></i>
+                <p class="ws-hero__feature-title">Escolha um mascote</p>
+                <p class="ws-hero__feature-text mb-0">
+                    Cada cofrinho ganha um animal e uma identidade própria.
+                </p>
+            </div>
+
+            <div class="ws-hero__feature">
+                <i class="bi bi-coin" aria-hidden="true"></i>
+                <p class="ws-hero__feature-title">Deposite em moedas</p>
+                <p class="ws-hero__feature-text mb-0">
+                    Selecione moedas da sua Currency ou informe um valor personalizado.
+                </p>
+            </div>
+
+            <div class="ws-hero__feature">
+                <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+                <p class="ws-hero__feature-title">Acompanhe o progresso</p>
+                <p class="ws-hero__feature-text mb-0">
+                    Veja o histórico de depósitos e o saldo crescer com o tempo.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</x-layouts.app>

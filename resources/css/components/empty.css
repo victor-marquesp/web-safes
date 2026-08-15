@@ -1,0 +1,25 @@
+
+.ws-empty-state {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--ws-ink-soft);
+}
+
+.ws-empty-state__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--ws-terracotta-light);
+    color: var(--ws-terracotta-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem;
+}
+
+.ws-empty-state__title {
+    font-weight: 600;
+    color: var(--ws-ink);
+    margin-bottom: 0.35rem;
+}

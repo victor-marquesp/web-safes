@@ -40,7 +40,7 @@
 
                 <dt class="col-sm-3">Valor</dt>
                 <dd class="col-sm-9">
-                    R$ {{ number_format($coin->value_cents / 100, 2, ',', '.') }}
+                    {{ number_format($coin->value_cents / 100, 2, ',', '.') }} {{ $coin->currency->name }}
                     <span class="text-muted">({{ $coin->value_cents }} centavos)</span>
                 </dd>
             </dl>

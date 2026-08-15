@@ -22,7 +22,7 @@
                         <div class="card-body d-flex flex-column pt-0">
                             <h5 class="card-title">{{ $animal->name }}</h5>
                             <p class="card-text text-muted small flex-grow-1">
-                                {{ Str::limit($animal->description ?? 'Sem descrição', 60) }}
+                                {{ \Illuminate\Support\Str::limit($animal->description ?? 'Sem descrição', 60) }}
                             </p>
                             <a href="{{ route('animals.show', $animal->id) }}" class="btn btn-outline-primary btn-sm w-100 mt-2">
                                 Ver Detalhes

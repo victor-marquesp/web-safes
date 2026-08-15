@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3 mb-0">Peças</h1>
         <a href="{{ route('coins.create') }}" class="btn btn-primary">
-            <i class="bi bi-plus-lg"></i> Nova peça
+            Nova peça
         </a>
     </div>
 
@@ -60,7 +60,7 @@
                                     {{ $coin->currency->name }}
                                 </a>
                             </td>
-                            <td>R$ {{ number_format($coin->value_cents / 100, 2, ',', '.') }}</td>
+                            <td>{{ number_format($coin->value_cents / 100, 2, ',', '.') }} <span class="text-muted small">{{ $coin->currency->name }}</span></td>
                             <td class="text-end">
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('coins.show', $coin) }}" class="btn btn-outline-secondary" title="Ver">

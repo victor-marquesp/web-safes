@@ -1,0 +1,22 @@
+
+.ws-deposit-summary {
+    background-color: var(--ws-cream);
+    border: 1px solid var(--ws-border);
+    border-radius: var(--ws-radius-md);
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.25rem 0;
+}
+
+.ws-deposit-summary__label {
+    font-size: 0.85rem;
+    color: var(--ws-ink-soft);
+}
+
+.ws-deposit-summary__value {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--ws-sage-dark);
+}

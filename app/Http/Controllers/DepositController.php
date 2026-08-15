@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\DTOs\DepositDTO;
 use App\Http\Requests\StoreDepositRequest;
-use App\Models\Deposit;
 use App\Models\Safe;
 use App\Services\DepositService;
 
@@ -35,13 +34,7 @@ class DepositController extends Controller {
 
         $this->depositService->store(safe: $safe, dto: $dto);
 
-        return redirect()->route('safes.history', $safe)->with('success', 'Deposit Made');
-    }
-
-    public function show(Safe $safe, Deposit $deposit) {
-
-        return view('deposit.show', compact('deposit'));
-
+        return redirect()->route('safes.show', $safe)->with('success', 'Deposit Made');
     }
 
 }

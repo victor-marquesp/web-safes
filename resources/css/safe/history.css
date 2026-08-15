@@ -1,0 +1,56 @@
+
+.ws-history-item {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--ws-border);
+}
+
+.ws-history-item:last-child {
+    border-bottom: none;
+}
+
+.ws-history-item__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--ws-sage-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.ws-history-item__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ws-history-item__icon .bi {
+    color: var(--ws-sage-dark);
+    font-size: 1.1rem;
+}
+
+.ws-history-item__main {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.ws-history-item__title {
+    font-weight: 500;
+    margin-bottom: 0.1rem;
+}
+
+.ws-history-item__meta {
+    font-size: 0.8rem;
+    color: var(--ws-ink-soft);
+}
+
+.ws-history-item__value {
+    font-weight: 600;
+    color: var(--ws-sage-dark);
+    white-space: nowrap;
+}

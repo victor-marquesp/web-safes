@@ -1,0 +1,70 @@
+
+.btn {
+    border-radius: var(--ws-radius-sm);
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: var(--ws-terracotta);
+    border-color: var(--ws-terracotta);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: var(--ws-terracotta-dark) !important;
+    border-color: var(--ws-terracotta-dark) !important;
+}
+
+.btn-outline-primary {
+    color: var(--ws-terracotta-dark);
+    border-color: var(--ws-terracotta);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--ws-terracotta);
+    border-color: var(--ws-terracotta);
+}
+
+.btn-outline-secondary {
+    color: var(--ws-ink-soft);
+    border-color: var(--ws-border);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--ws-ink-soft);
+    border-color: var(--ws-ink-soft);
+}
+
+.btn-danger,
+.btn-outline-danger {
+    --bs-btn-color: var(--ws-danger);
+    --bs-btn-border-color: var(--ws-danger);
+    --bs-btn-hover-bg: var(--ws-danger);
+    --bs-btn-hover-border-color: var(--ws-danger);
+}
+
+.btn-danger {
+    background-color: var(--ws-danger);
+    border-color: var(--ws-danger);
+    color: #fff;
+}
+
+.btn-ws-deposit {
+    background-color: var(--ws-sage);
+    border-color: var(--ws-sage);
+    color: #fff;
+}
+
+.btn-ws-deposit:hover,
+.btn-ws-deposit:focus {
+    background-color: var(--ws-sage-dark);
+    border-color: var(--ws-sage-dark);
+    color: #fff;
+}
+
+.btn-ws-deposit:disabled {
+    background-color: var(--ws-border);
+    border-color: var(--ws-border);
+    color: var(--ws-ink-soft);
+}

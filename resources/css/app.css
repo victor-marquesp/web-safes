@@ -1,1 +1,23 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+@import "variables.css";
+@import "base.css";
+
+@import "./components/buttons.css";
+@import "./components/navbar.css";
+@import "./components/cards.css";
+@import "./components/forms.css";
+@import "./components/header.css";
+@import "./components/alerts.css";
+@import "./components/empty.css";
+@import "./components/amount.css";
+
+@import "./safe/card.css";
+@import "./safe/history.css";
+
+@import "./deposit/coin.css";
+@import "./deposit/summary.css";
+
+@import "./pages/welcome.css";
+

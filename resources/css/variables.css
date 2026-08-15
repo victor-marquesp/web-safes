@@ -1,0 +1,23 @@
+
+:root {
+    --ws-cream: #FAF6F0;
+    --ws-surface: #FFFFFF;
+    --ws-terracotta: #C96F4A;
+    --ws-terracotta-dark: #A85A3A;
+    --ws-terracotta-light: #F3E3DA;
+    --ws-sage: #6E8B6E;
+    --ws-sage-dark: #557055;
+    --ws-sage-light: #E4EBE1;
+    --ws-gold: #D9A441;
+    --ws-gold-light: #F8ECD4;
+    --ws-ink: #2E2A26;
+    --ws-ink-soft: #6B645C;
+    --ws-border: #E7DED2;
+    --ws-danger: #C1483C;
+    --ws-danger-light: #F7E4E1;
+    --ws-radius-lg: 16px;
+    --ws-radius-md: 12px;
+    --ws-radius-sm: 8px;
+    --ws-shadow: 0 1px 3px rgba(46, 42, 38, 0.06);
+    --ws-shadow-hover: 0 4px 14px rgba(46, 42, 38, 0.10);
+}

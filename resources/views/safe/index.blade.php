@@ -2,22 +2,34 @@
 
     <x-slot:title>Cofrinhos</x-slot>
 
-    <div class="container my-4">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="h3 mb-0">Cofrinhos</h1>
-            <a href="{{ route('safes.create') }}" class="btn btn-primary">Novo Cofrinho</a>
-        </div>
+    <x-ui.page-header title="Cofrinhos" subtitle="Seus cofrinhos virtuais, todos em um só lugar.">
+        <x-slot:action>
+            <a href="{{ route('safes.create') }}" class="btn btn-primary">
+                Novo cofrinho
+            </a>
+        </x-slot:action>
+    </x-ui.page-header>
 
+    @if ($safes->isEmpty())
+        <x-ui.empty-state
+            icon="bi-piggy-bank"
+            title="Você ainda não tem nenhum cofrinho"
+            description="Crie o primeiro cofrinho e comece a guardar dinheiro."
+        >
+            <x-slot:action>
+                <a href="{{ route('safes.create') }}" class="btn btn-primary">
+                    <i class="bi bi-plus-lg me-1" aria-hidden="true"></i> Criar meu primeiro cofrinho
+                </a>
+            </x-slot:action>
+        </x-ui.empty-state>
+    @else
         <div class="row g-4">
-            @forelse ($safes as $safe)
-                <div class="col-12 col-sm-6 col-md-4">
+            @foreach ($safes as $safe)
+                <div class="col-12 col-sm-6 col-lg-4">
                     <x-ui.safe-card :safe="$safe" />
                 </div>
-            @empty
-                <div class="col-12 text-center text-muted py-5">
-                    <p>Nenhum cofrinho encontrado.</p>
-                </div>
-            @endforelse
+            @endforeach
         </div>
-    </div>
+    @endif
+
 </x-layouts.app>

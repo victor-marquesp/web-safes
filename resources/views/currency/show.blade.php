@@ -62,7 +62,7 @@
                                      width="28" height="28" class="rounded border p-1 bg-white">
                             </td>
                             <td>{{ $coin->name }}</td>
-                            <td>R$ {{ number_format($coin->value_cents / 100, 2, ',', '.') }}</td>
+                            <td>{{ number_format($coin->value_cents / 100, 2, ',', '.') }} {{ $currency->name }}</td>
                             <td class="text-end">
                                 <a href="{{ route('coins.show', $coin) }}" class="btn btn-sm btn-outline-secondary">Ver</a>
                             </td>

@@ -43,7 +43,7 @@
         <div class="invalid-feedback d-block">{{ $message }}</div>
     @enderror
     <div class="form-text">
-        Equivale a <strong id="value_preview">R$ 0,00</strong>. Ex.: 150 = R$ 1,50.
+        Equivale a <strong id="value_preview">0,00</strong> na moeda selecionada. Ex.: 150 = 1,50.
     </div>
 </div>
 
@@ -84,7 +84,7 @@
 
         function updatePreview() {
             const cents = parseInt(input.value || '0', 10) || 0;
-            preview.textContent = 'R$ ' + (cents / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+            preview.textContent = (cents / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
         }
 
         input.addEventListener('input', updatePreview);

@@ -1,0 +1,12 @@
+
+.card {
+    border: 1px solid var(--ws-border);
+    border-radius: var(--ws-radius-lg);
+    box-shadow: var(--ws-shadow);
+}
+
+.card-header {
+    border-bottom: 1px solid var(--ws-border);
+    border-top-left-radius: var(--ws-radius-lg) !important;
+    border-top-right-radius: var(--ws-radius-lg) !important;
+}

@@ -1,0 +1,17 @@
+
+.alert {
+    border-radius: var(--ws-radius-md);
+    border: 1px solid transparent;
+}
+
+.alert-success {
+    background-color: var(--ws-sage-light);
+    color: var(--ws-sage-dark);
+    border-color: var(--ws-sage);
+}
+
+.alert-danger {
+    background-color: var(--ws-danger-light);
+    color: var(--ws-danger);
+    border-color: var(--ws-danger);
+}

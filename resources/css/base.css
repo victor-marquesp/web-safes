@@ -1,0 +1,23 @@
+
+body {
+    background-color: var(--ws-cream);
+    color: var(--ws-ink);
+    font-feature-settings: "kern";
+}
+
+a {
+    color: var(--ws-terracotta-dark);
+}
+
+a:hover {
+    color: var(--ws-terracotta);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--ws-ink);
+    font-weight: 600;
+}
+
+.text-muted {
+    color: var(--ws-ink-soft) !important;
+}

@@ -11,17 +11,30 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="d-flex flex-column min-vh-100 bg-light">
+<body class="d-flex flex-column min-vh-100">
 
     <x-layouts.navbar></x-layouts.navbar>
 
     <main class="container flex-grow-1 py-4">
+
+        @if (session('success'))
+            <x-ui.alert type="success" :dismissible="true">
+                {{ session('success') }}
+            </x-ui.alert>
+        @endif
+
+        @if (session('error'))
+            <x-ui.alert type="danger" :dismissible="true">
+                {{ session('error') }}
+            </x-ui.alert>
+        @endif
+
         {{ $slot }}
     </main>
 
-    <footer class="bg-white border-top py-3 text-center text-muted small mt-auto">
+    <footer class="border-top py-3 text-center text-muted small mt-auto" style="background-color: var(--ws-surface);">
         <div class="container">
-            &copy; {{ date('Y') }} Victor Marques. Licensa livre.
+            &copy; {{ date('Y') }} WebSafes. Guarde hoje, sorria amanhã.
         </div>
     </footer>
 

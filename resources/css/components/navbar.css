@@ -1,0 +1,53 @@
+
+.ws-navbar {
+    background-color: var(--ws-terracotta);
+    box-shadow: var(--ws-shadow);
+}
+
+.ws-navbar .navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+}
+
+.ws-brand-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ws-brand-mark img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.ws-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    border-radius: var(--ws-radius-sm);
+    padding: 0.5rem 0.85rem;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ws-navbar .nav-link:hover,
+.ws-navbar .nav-link:focus {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.ws-navbar .nav-link.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.22);
+}
+
+.ws-navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.ws-navbar .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}

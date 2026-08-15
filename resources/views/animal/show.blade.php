@@ -40,7 +40,10 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
                                 <strong>{{ $safe->name }}</strong>
-                                <small class="text-muted d-block">R$ {{ number_format($safe->savings, 2, ',', '.') }}</small>
+                                <small class="text-muted d-block">
+                                    {{ number_format($safe->deposits->sum('value_cents') / 100, 2, ',', '.') }}
+                                    {{ $safe->currency->name }}
+                                </small>
                             </div>
                             <a href="{{ route('safes.show', $safe->id) }}" class="btn btn-sm btn-outline-primary">
                                 Ver Cofrinho

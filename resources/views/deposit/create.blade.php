@@ -3,7 +3,6 @@
     <x-slot:title>Depositar em {{ $safe->name }}</x-slot>
 
     @php
-        $currentBalance = $safe->deposits->sum('value_cents');
         $coins = $safe->currency->coins;
     @endphp
 
@@ -14,16 +13,6 @@
     <div class="row justify-content-center">
         <div class="col-12 col-lg-8">
             <div class="card">
-                {{-- <div class="card-header bg-white py-3 d-flex align-items-center gap-3">
-                    <x-ui.animal-icon :animal="$safe->animal" :size="48" />
-                    <div>
-                        <h1 class="h5 mb-0">Depositar em {{ $safe->name }}</h1>
-                        <p class="text-muted small mb-0">
-                            Saldo atual: {{ number_format($currentBalance / 100, 2, ',', '.') }}
-                            ({{ $safe->currency->name }})
-                        </p>
-                    </div>
-                </div> --}}
 
                 <div class="card-body">
 

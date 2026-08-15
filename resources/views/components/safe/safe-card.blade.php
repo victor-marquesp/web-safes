@@ -1,8 +1,4 @@
-@props(['safe'])
-
-@php
-    $balance = $safe->deposits->sum('value_cents');
-@endphp
+@props(['safe', 'balance'])
 
 <div class="card ws-safe-card position-relative">
 

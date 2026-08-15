@@ -18,7 +18,7 @@ class SafeController extends Controller {
 
     public function index() {
         
-        $safes = Safe::all();
+        $safes = Safe::withSum('deposits', 'value_cents')->get();
 
         return view('safe.index', compact('safes'));
     }

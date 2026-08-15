@@ -6,14 +6,7 @@
         </a>
     </div>
 
-    @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
-        </div>
-    @endif
-
-    <form method="GET" action="{{ route('coins.index') }}" class="row g-2 mb-3">
+    {{-- <form method="GET" action="{{ route('coins.index') }}" class="row g-2 mb-3">
         <div class="col-auto">
             <select name="currency_id" class="form-select" onchange="this.form.submit()">
                 <option value="">Todas as moedas</option>
@@ -29,7 +22,7 @@
                 <a href="{{ route('coins.index') }}" class="btn btn-outline-secondary">Limpar filtro</a>
             </div>
         @endif
-    </form>
+    </form> --}}
 
     <div class="card shadow-sm">
         <div class="table-responsive">

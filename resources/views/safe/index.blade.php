@@ -10,26 +10,31 @@
         </x-slot:action>
     </x-ui.page-header>
 
-    @if ($safes->isEmpty())
-        <x-ui.empty-state
-            icon="bi-piggy-bank"
-            title="Você ainda não tem nenhum cofrinho"
-            description="Crie o primeiro cofrinho e comece a guardar dinheiro."
-        >
-            <x-slot:action>
-                <a href="{{ route('safes.create') }}" class="btn btn-primary">
-                    <i class="bi bi-plus-lg me-1" aria-hidden="true"></i> Criar meu primeiro cofrinho
-                </a>
-            </x-slot:action>
-        </x-ui.empty-state>
-    @else
-        <div class="row g-4">
-            @foreach ($safes as $safe)
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <x-ui.safe-card :safe="$safe" />
-                </div>
-            @endforeach
-        </div>
-    @endif
+    <div class="row g-4">
+        @forelse ($safes as $safe)
+
+            <div class="col-12 col-sm-6 col-lg-4">
+                <x-safe.safe-card 
+                    :safe="$safe" 
+                    :balance="$safe->deposits_sum_value_cents"
+                />
+            </div>
+            
+        @empty
+
+            <x-ui.empty-state
+                icon="bi-piggy-bank"
+                title="Você ainda não tem nenhum cofrinho"
+                description="Crie o primeiro cofrinho e comece a guardar dinheiro."
+            >
+                <x-slot:action>
+                    <a href="{{ route('safes.create') }}" class="btn btn-primary">
+                        <i class="bi bi-plus-lg me-1" aria-hidden="true"></i> Criar meu primeiro cofrinho
+                    </a>
+                </x-slot:action>
+            </x-ui.empty-state>
+            
+        @endforelse
+    </div>
 
 </x-layouts.app>

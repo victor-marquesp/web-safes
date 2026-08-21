@@ -22,8 +22,9 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
 
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-1">
+            <ul class="navbar-nav mb-2 mb-lg-0 gap-lg-1">
 
+                @auth                    
                 <li class="nav-item">
                     <a
                         class="nav-link {{ request()->routeIs('safes.*') ? 'active' : '' }}"
@@ -33,7 +34,12 @@
                         <i class="bi bi-wallet2 me-1" aria-hidden="true"></i> Cofrinhos
                     </a>
                 </li>
+                @endauth
 
+                {{-- ----------------------------------------------------------------- --}}
+                {{-- Admnistração --}}
+                {{-- ----------------------------------------------------------------- --}}
+                @if( auth()->user()?->is_admin )
                 <li class="nav-item">
                     <a
                         class="nav-link {{ request()->routeIs('animals.*') ? 'active' : '' }}"
@@ -43,7 +49,9 @@
                         <i class="bi bi-piggy-bank me-1" aria-hidden="true"></i> Animais
                     </a>
                 </li>
+                @endif
 
+                @if( auth()->user()?->is_admin )
                 <li class="nav-item">
                     <a
                         class="nav-link {{ request()->routeIs('currencies.*') ? 'active' : '' }}"
@@ -53,7 +61,9 @@
                         <i class="bi bi-cash-coin me-1" aria-hidden="true"></i> Câmbios
                     </a>
                 </li>
+                @endif
 
+                @if( auth()->user()?->is_admin )
                 <li class="nav-item">
                     <a
                         class="nav-link {{ request()->routeIs('coins.*') ? 'active' : '' }}"
@@ -63,8 +73,62 @@
                         <i class="bi bi-coin me-1" aria-hidden="true"></i> Moedas
                     </a>
                 </li>
+                @endif
 
             </ul>
+
+            {{-- ----------------------------------------------------------------- --}}
+            {{-- Autenticação --}}
+            {{-- ----------------------------------------------------------------- --}}
+            <ul class="navbar-nav ms-auto">
+                @auth
+                     <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <i class="bi bi-person-circle me-1"></i>
+                            {{ auth()->user()->name }}
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <li>
+                                <form method="POST" action="{{ route('auth.logout') }}">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">
+                                        <i class="bi bi-box-arrow-right me-2"></i>
+                                        Sair
+                                    </button>
+                                </form>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a
+                            class="nav-link {{ request()->routeIs('auth.register.*') ? 'active' : '' }}"
+                            href="{{ route('auth.register') }}"
+                            @if (request()->routeIs('auth.register.*')) aria-current="page" @endif
+                        >
+                            <i class="bi bi-person-fill-add me-1" aria-hidden="true"></i> Criar Conta
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link {{ request()->routeIs('auth.login.*') ? 'active' : '' }}"
+                            href="{{ route('auth.login') }}"
+                            @if (request()->routeIs('auth.login.*')) aria-current="page" @endif
+                        >
+                            <i class="bi bi-door-open-fill me-1" aria-hidden="true"></i> Entrar
+                        </a>
+                    </li>
+                @endauth
 
         </div>
 

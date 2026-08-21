@@ -10,13 +10,23 @@
         <h1 class="ws-hero__title">Bem-vindo ao WebSafes</h1>
 
         <p class="ws-hero__subtitle">
-            Crie seu cofrinho, escolha como ele será representado e comece a guardar dinheiro,
+            Crie seu cofrinho e comece a guardar dinheiro,
             um depósito de cada vez.
         </p>
 
-        <a href="{{ route('safes.index') }}" class="btn btn-primary btn-lg px-4">
+        @auth
+            <a href="{{ route('safes.index') }}" class="btn btn-primary btn-lg px-4">
             <i class="bi bi-arrow-right-circle me-1" aria-hidden="true"></i> Ver meus cofrinhos
-        </a>
+            </a>    
+        @else
+            <a href="{{ route('auth.register') }}" class="btn btn-primary btn-lg px-4">
+            <i class="bi bi-person-fill-add me-1" aria-hidden="true"></i> Criar Conta
+            </a>
+
+            <a href="{{ route('auth.login') }}" class="btn btn-primary btn-lg px-4">
+            <i class="bi bi-door-open-fill me-1" aria-hidden="true"></i> Entrar
+            </a>  
+        @endauth
 
         <div class="ws-hero__features">
             <div class="ws-hero__feature">

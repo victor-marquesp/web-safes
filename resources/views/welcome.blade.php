@@ -19,11 +19,11 @@
             <i class="bi bi-arrow-right-circle me-1" aria-hidden="true"></i> Ver meus cofrinhos
             </a>    
         @else
-            <a href="{{ route('auth.register') }}" class="btn btn-primary btn-lg px-4">
+            <a href="{{ route('auth.register.form') }}" class="btn btn-primary btn-lg px-4">
             <i class="bi bi-person-fill-add me-1" aria-hidden="true"></i> Criar Conta
             </a>
 
-            <a href="{{ route('auth.login') }}" class="btn btn-primary btn-lg px-4">
+            <a href="{{ route('auth.login.form') }}" class="btn btn-primary btn-lg px-4">
             <i class="bi bi-door-open-fill me-1" aria-hidden="true"></i> Entrar
             </a>  
         @endauth

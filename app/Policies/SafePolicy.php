@@ -34,4 +34,10 @@ class SafePolicy {
 
     }
 
+    public function break(User $user, Safe $safe) : bool {
+
+        return $user->id === $safe->user_id;
+        
+    }
+
 }

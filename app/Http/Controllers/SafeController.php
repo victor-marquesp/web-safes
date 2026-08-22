@@ -53,7 +53,7 @@ class SafeController extends Controller {
     public function show(Safe $safe) {
 
         $this->authorize('view', $safe);
-
+        
         return view('safe.show', compact('safe'));
 
     }
@@ -91,5 +91,14 @@ class SafeController extends Controller {
 
         return redirect()->route('safes.index')->with('success', 'Safe deleted');
 
+    }
+
+    public function break(Safe $safe) {
+
+        $this->authorize('break', $safe);
+
+        $this->safeService->break($safe);
+
+        return redirect()->route('safes.index')->with('success', 'Safe broken');
     }
 }

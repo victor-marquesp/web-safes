@@ -5,16 +5,18 @@ namespace App\Services;
 use App\DTOs\SafeDTO;
 use App\Models\Safe;
 
+use App\Enums\State;
+
 class SafeService {
 
     public function create(SafeDTO $dto) {
 
-        return Safe::create([
-            'name' => $dto->name,
-            'animal_id' => $dto->animalId,
-            'currency_id' => $dto->currencyId,
-            'description' => $dto->description
-        ]);
+        $safe = new Safe();
+
+        $safe->fill($dto->thisToArray());
+        $safe->user_id = auth()->id();
+
+        return $safe->save();
 
     }
 
@@ -33,6 +35,13 @@ class SafeService {
     public function delete(Safe $safe) {
 
         $safe->delete();
+
+    }
+
+    public function break(Safe $safe) {
+
+        $safe->state = State::BROKEN;
+        $safe->save();
 
     }
 

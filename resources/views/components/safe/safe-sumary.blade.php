@@ -11,6 +11,12 @@
             <x-ui.currency-amount :value-cents="$balance" :currency="$safe->currency" label="Saldo atual" size="lg" />
         </div>
 
+        @if($safe->state === App\Enums\State::INTACT)
+            <span class="badge bg-primary rounded-pill"><i class="bi bi-heart"></i> Intacto</span>
+        @else
+            <span class="badge bg-danger rounded-pill"><i class="bi bi-heartbreak"></i> Quebrado</span>
+        @endif
+
         <p class="text-muted">
             {{ $safe->description ?? 'Nenhuma descrição fornecida.' }}
         </p>
@@ -20,8 +26,13 @@
                 <i class="bi bi-plus-circle-fill me-1" aria-hidden="true"></i> Depositar
             </a>
 
+            <button type="button" class="btn btn-outline-danger flex-fill" data-bs-toggle="modal"
+                    data-bs-target="#breakSafeModal">
+                    <i class="bi bi-hammer me-1" aria-hidden="true"></i> Quebrar
+            </button>
+
             <div class="d-flex gap-2">
-                <a href="{{ route('safes.edit', $safe) }}" class="btn btn-outline-secondary flex-fill">
+                <a href="{{ route('safes.edit', $safe) }}" class="btn btn-outline-warning flex-fill">
                     <i class="bi bi-pencil me-1" aria-hidden="true"></i> Editar
                 </a>
 

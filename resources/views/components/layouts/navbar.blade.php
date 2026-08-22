@@ -97,7 +97,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
 
                             <li>
-                                <form method="POST" action="{{ route('auth.logout') }}">
+                                <form method="POST" action="{{ route('auth.login') }}">
                                     @csrf
                                     <button type="submit" class="dropdown-item">
                                         <i class="bi bi-box-arrow-right me-2"></i>
@@ -112,18 +112,18 @@
                 @else
                     <li class="nav-item">
                         <a
-                            class="nav-link {{ request()->routeIs('auth.register.*') ? 'active' : '' }}"
-                            href="{{ route('auth.register') }}"
-                            @if (request()->routeIs('auth.register.*')) aria-current="page" @endif
+                            class="nav-link {{ request()->routeIs('auth.register.form') ? 'active' : '' }}"
+                            href="{{ route('auth.register.form') }}"
+                            @if (request()->routeIs('auth.register.form.*')) aria-current="page" @endif
                         >
                             <i class="bi bi-person-fill-add me-1" aria-hidden="true"></i> Criar Conta
                         </a>
                     </li>
                     <li class="nav-item">
                         <a
-                            class="nav-link {{ request()->routeIs('auth.login.*') ? 'active' : '' }}"
-                            href="{{ route('auth.login') }}"
-                            @if (request()->routeIs('auth.login.*')) aria-current="page" @endif
+                            class="nav-link {{ request()->routeIs('auth.login.form') ? 'active' : '' }}"
+                            href="{{ route('auth.login.form') }}"
+                            @if (request()->routeIs('auth.login.form.*')) aria-current="page" @endif
                         >
                             <i class="bi bi-door-open-fill me-1" aria-hidden="true"></i> Entrar
                         </a>

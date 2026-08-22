@@ -18,11 +18,12 @@
         </div>
 
         <div class="col-12 col-lg-8 card h-100">
-                <x-safe.deposit-history :safe="$safe" :deposits="$deposits" />
+            <x-safe.deposit-history :safe="$safe" :deposits="$deposits" />
         </div>
 
     </div>
 
     <x-safe.delete-safe-modal :safe="$safe" :deposits="$safe->deposits" />
+    <x-safe.break-safe-modal :safe="$safe" />
 
 </x-layouts.app>

@@ -97,7 +97,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
 
                             <li>
-                                <form method="POST" action="{{ route('auth.login') }}">
+                                <form method="POST" action="{{ route('auth.logout') }}">
                                     @csrf
                                     <button type="submit" class="dropdown-item">
                                         <i class="bi bi-box-arrow-right me-2"></i>

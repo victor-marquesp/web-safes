@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller {
@@ -36,7 +36,7 @@ class AuthController extends Controller {
             return redirect()->route('safes.index')->with('success', 'user logged');
         }
 
-        return redirect()->route('welcome')->with('error', 'inable to login');
+        return redirect()->route('auth.login.form')->with('error', 'Unable to login');
 
     }
 

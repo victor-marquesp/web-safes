@@ -14,6 +14,8 @@ class DepositController extends Controller {
     ) {}
 
     public function index(Safe $safe) {
+
+        $this->authorize('viewAny', $safe);
     
         $deposits = $safe->deposits()->latest()->get();
 
@@ -22,11 +24,15 @@ class DepositController extends Controller {
 
     public function create(Safe $safe) {
 
+        $this->authorize('create', $safe);
+
         return view('deposit.create', compact('safe'));
 
     }
 
     public function store(StoreDepositRequest $request, Safe $safe) {
+
+        $this->authorize('create', $safe);
         
         $dto = DepositDTO::fromArray(
             $request->validated(),

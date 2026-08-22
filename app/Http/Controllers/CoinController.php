@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
+
 use App\Models\Coin;
 use App\Models\Currency;
 use App\Services\CoinService;
@@ -16,6 +18,9 @@ class CoinController extends Controller {
     ) {}
 
     public function index() {
+
+        Gate::authorize('is-admin');
+
         $coins = Coin::all();
         $currencies = Currency::all();
 
@@ -23,12 +28,17 @@ class CoinController extends Controller {
     }
 
     public function create() {
+
+        Gate::authorize('is-admin');
+
         $currencies = Currency::all();
 
         return view('coin.create', compact('currencies'));
     }
 
     public function store(StoreCoinRequest $request) {
+
+        Gate::authorize('is-admin');
 
         $dto = CoinDTO::fromArray(
             $request->validated()
@@ -40,16 +50,24 @@ class CoinController extends Controller {
     }
 
     public function show(Coin $coin) {
+
+        Gate::authorize('is-admin');
+
         return view('coin.show', compact('coin'));
     }
 
     public function edit(Coin $coin) {
+
+        Gate::authorize('is-admin');
+
         $currencies = Currency::all();
 
         return view('coin.edit', compact(['coin', 'currencies']));
     }
 
     public function update(UpdateCoinRequest $request, Coin $coin) {
+
+        Gate::authorize('is-admin');
         
         $dto = CoinDTO::fromArray(
             $request->validated()
@@ -61,6 +79,9 @@ class CoinController extends Controller {
     }
 
     public function destroy(Coin $coin) {
+
+        Gate::authorize('is-admin');
+
         $this->coinService->delete($coin);
 
         return redirect()->route('coins.index')->with('success', 'Coin Deleted');

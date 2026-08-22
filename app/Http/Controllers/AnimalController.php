@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
+
 use App\DTOs\AnimalDTO;
 use App\Http\Requests\StoreAnimalRequest;
 use App\Http\Requests\UpdateAnimalRequest;
 use App\Models\Animal;
 use App\Services\AnimalService;
-use Illuminate\Support\Facades\Storage;
 
 class AnimalController extends Controller {
 
@@ -17,6 +18,8 @@ class AnimalController extends Controller {
 
     public function index() {
 
+        Gate::authorize('is-admin');
+
         $animals = Animal::all();
 
         return view('animal.index', compact('animals'));
@@ -25,11 +28,15 @@ class AnimalController extends Controller {
 
     public function create() {
 
+        Gate::authorize('is-admin');
+
         return view('animal.create');
         
     }
 
     public function store(StoreAnimalRequest $request) {
+
+        Gate::authorize('is-admin');
 
         $dto = AnimalDTO::fromArray(
             $request->validated()
@@ -41,6 +48,8 @@ class AnimalController extends Controller {
     }
 
     public function show(Animal $animal) {
+
+        Gate::authorize('is-admin');
         
         return view('animal.show', compact('animal'));
 
@@ -48,11 +57,15 @@ class AnimalController extends Controller {
 
     public function edit(Animal $animal) {
 
+        Gate::authorize('is-admin');
+
         return view('animal.edit', compact('animal'));
 
     }
 
     public function update(UpdateAnimalRequest $request, Animal $animal) {
+
+        Gate::authorize('is-admin');
 
         $dto = AnimalDTO::fromArray(
             $request->validated()
@@ -64,8 +77,10 @@ class AnimalController extends Controller {
         
     }
 
-    public function destroy(Animal $animal)
-    {
+    public function destroy(Animal $animal) {
+
+        Gate::authorize('is-admin');
+
         $this->animalService->delete($animal);
 
         return redirect()->route('animals.index')->with('success', 'Animal deleted');

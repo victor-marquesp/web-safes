@@ -18,6 +18,10 @@ class Safe extends Model
         'currency_id',
         'description'
     ];
+
+    public function user() : BelongsTo {
+        return $this->belongsTo(User::class);
+    }
     
     public function animal() : BelongsTo {
         return $this->belongsTo(Animal::class);

@@ -18,12 +18,17 @@ class SafeController extends Controller {
 
     public function index() {
         
-        $safes = Safe::withSum('deposits', 'value_cents')->get();
+        $this->authorize('viewAny', Safe::class);
+        
+        $userId = auth()->id();
+        $safes = Safe::where('user_id', $userId)->withSum('deposits', 'value_cents')->get();
 
         return view('safe.index', compact('safes'));
     }
 
     public function create() {
+
+        $this->authorize('create', Safe::class);
 
         $animals = Animal::all();
         $currencies = Currency::all();
@@ -32,6 +37,8 @@ class SafeController extends Controller {
     }
 
     public function store(StoreSafeRequest $request) {
+
+        $this->authorize('create', Safe::class);
         
         $dto = SafeDTO::fromArray(
             $request->validated()
@@ -45,11 +52,15 @@ class SafeController extends Controller {
 
     public function show(Safe $safe) {
 
+        $this->authorize('view', $safe);
+
         return view('safe.show', compact('safe'));
 
     }
 
     public function edit(Safe $safe) {
+
+        $this->authorize('update', $safe);
 
         $animals = Animal::all();
         $currencies = Currency::all();
@@ -59,6 +70,8 @@ class SafeController extends Controller {
     }
 
     public function update(UpdateSafeRequest $request, Safe $safe) {
+
+        $this->authorize('update', $safe);
         
         $dto = SafeDTO::fromArray(
             $request->validated()
@@ -71,6 +84,8 @@ class SafeController extends Controller {
     }
 
     public function destroy(Safe $safe) {
+
+        $this->authorize('delete', $safe);
         
         $this->safeService->delete($safe);
 

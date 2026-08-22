@@ -12,21 +12,21 @@ use App\Http\Controllers\Auth\AuthController;
 
 Route::view('/', 'welcome')->name('welcome');
 
-Route::resource('/currencies', CurrencyController::class);
-Route::resource('/coins', CoinController::class);
-Route::resource('/animals', AnimalController::class);
-Route::resource('/safes', SafeController::class);
+Route::resource('/currencies', CurrencyController::class)->middleware('auth');
+Route::resource('/coins', CoinController::class)->middleware('auth');
+Route::resource('/animals', AnimalController::class)->middleware('auth');
+Route::resource('/safes', SafeController::class)->middleware('auth');
 
-Route::get('/safes/{safe}/deposits', [DepositController::class, 'index'])->name('safes.history');
-Route::get('/safes/{safe}/deposits/create', [DepositController::class, 'create'])->name('deposits.create');
-Route::post('/safes/{safe}/deposits', [DepositController::class, 'store'])->name('deposits.store');
+Route::get('/safes/{safe}/deposits', [DepositController::class, 'index'])->name('safes.history')->middleware('auth');
+Route::get('/safes/{safe}/deposits/create', [DepositController::class, 'create'])->name('deposits.create')->middleware('auth');
+Route::post('/safes/{safe}/deposits', [DepositController::class, 'store'])->name('deposits.store')->middleware('auth');
 
 // Autenticação
 
-Route::view('/register', 'auth.register')->name('auth.register.form');
-Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
+Route::view('/register', 'auth.register')->name('auth.register.form')->middleware('guest');
+Route::post('/register', [AuthController::class, 'register'])->name('auth.register')->middleware('guest');
 
-Route::view('login', 'auth.login')->name('auth.login.form');
-Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::view('login', 'auth.login')->name('auth.login.form')->middleware('guest');
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login')->middleware('guest');
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth');

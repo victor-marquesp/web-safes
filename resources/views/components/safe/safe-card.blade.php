@@ -23,12 +23,25 @@
     </a>
 
     <div class="px-3 pb-3">
-        <a
+        @if($safe->state === App\Enums\State::INTACT)
+                <a href="{{ route('deposits.create', $safe) }}" 
+                    class="btn btn-success w-100 position-relative ws-safe-card__deposit-btn"
+                    style="z-index: 2;">
+                    <i class="bi bi-plus-circle-fill me-1" aria-hidden="true"></i> Depositar
+                </a>
+            @else
+                <a href="{{ route('deposits.create', $safe) }}" 
+                    class="btn btn-success disabled w-100 position-relative ws-safe-card__deposit-btn"
+                    style="z-index: 2;">
+                    <i class="bi bi-plus-circle-fill me-1" aria-hidden="true"></i> Depositar
+                </a>
+            @endif
+        {{-- <a
             href="{{ route('deposits.create', $safe) }}"
             class="btn btn-ws-deposit w-100 position-relative ws-safe-card__deposit-btn"
             style="z-index: 2;"
         >
             <i class="bi bi-plus-circle-fill me-1" aria-hidden="true"></i> Depositar
-        </a>
+        </a> --}}
     </div>
 </div>

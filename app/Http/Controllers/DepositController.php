@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\DTOs\DepositDTO;
+use App\Exceptions\SafeBrokenException;
 use App\Http\Requests\StoreDepositRequest;
 use App\Models\Safe;
 use App\Services\DepositService;
+use App\Enums\State;
 
 class DepositController extends Controller {
 
@@ -26,6 +28,10 @@ class DepositController extends Controller {
 
         $this->authorize('create', $safe);
 
+        if($safe->state === State::BROKEN) {
+            return redirect()->route('safes.show', $safe)->with('error', 'Safe Broken');
+        }
+
         return view('deposit.create', compact('safe'));
 
     }
@@ -38,7 +44,11 @@ class DepositController extends Controller {
             $request->validated(),
         );
 
-        $this->depositService->store(safe: $safe, dto: $dto);
+        try {
+            $this->depositService->store(safe: $safe, dto: $dto);
+        } catch (SafeBrokenException $e) {
+            return redirect()->route('safes.show', $safe)->with('error', 'Safe Broken');
+        }
 
         return redirect()->route('safes.show', $safe)->with('success', 'Deposit Made');
     }

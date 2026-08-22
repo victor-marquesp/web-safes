@@ -10,11 +10,14 @@
         :title="'Histórico de ' . $safe->name"
         subtitle="Todos os depósitos registrados neste cofrinho."
     >
-        <x-slot:action>
-            <a href="{{ route('deposits.create', $safe) }}" class="btn btn-ws-deposit">
-                <i class="bi bi-plus-circle-fill me-1" aria-hidden="true"></i> Depositar
-            </a>
-        </x-slot:action>
+
+        @if($safe->state === App\Enums\State::INTACT)
+            <x-slot:action>
+                <a href="{{ route('deposits.create', $safe) }}" class="btn btn-ws-deposit">
+                    <i class="bi bi-plus-circle-fill me-1" aria-hidden="true"></i> Depositar
+                </a>
+            </x-slot:action>
+        @endif
     </x-ui.page-header>
 
     <div class="card">

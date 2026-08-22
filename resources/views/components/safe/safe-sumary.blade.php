@@ -22,14 +22,22 @@
         </p>
 
         <div class="d-grid gap-2 mt-3">
-            <a href="{{ route('deposits.create', $safe) }}" class="btn btn-ws-deposit">
-                <i class="bi bi-plus-circle-fill me-1" aria-hidden="true"></i> Depositar
-            </a>
+            @if($safe->state === App\Enums\State::INTACT)
+                <a href="{{ route('deposits.create', $safe) }}" class="btn btn-ws-deposit">
+                    <i class="bi bi-plus-circle-fill me-1" aria-hidden="true"></i> Depositar
+                </a>
+            @else
+                <a href="{{ route('deposits.create', $safe) }}" class="btn btn-success disabled">
+                    <i class="bi bi-plus-circle-fill me-1" aria-hidden="true"></i> Depositar
+                </a>
+            @endif
 
+            @if($safe->state === App\Enums\State::INTACT)
             <button type="button" class="btn btn-outline-danger flex-fill" data-bs-toggle="modal"
                     data-bs-target="#breakSafeModal">
                     <i class="bi bi-hammer me-1" aria-hidden="true"></i> Quebrar
             </button>
+            @endif
 
             <div class="d-flex gap-2">
                 <a href="{{ route('safes.edit', $safe) }}" class="btn btn-outline-warning flex-fill">

@@ -6,15 +6,14 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SafeSeeder extends Seeder
-{
+class SafeSeeder extends Seeder {
 
-    public function run(): void
-    {
+    public function run() : void {
 
         $data = [
             [
                 'name' => 'Piggy Safe', 
+                'user_id' => 3,
                 'animal_id' => 2, 
                 'currency_id' => 1, 
                 'description' => 'My First Safe!!!', 
@@ -23,6 +22,7 @@ class SafeSeeder extends Seeder
             ],
             [
                 'name' => 'Turtle Safe', 
+                'user_id' => 3,
                 'animal_id' => 3, 
                 'currency_id' => 1, 
                 'description' => null, 
@@ -31,6 +31,7 @@ class SafeSeeder extends Seeder
             ],
             [
                 'name' => 'Regular Safe', 
+                'user_id' => 3,
                 'animal_id' => 1, 
                 'currency_id' => 2, 
                 'description' => null, 

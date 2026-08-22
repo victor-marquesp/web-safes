@@ -13,10 +13,11 @@ return new class extends Migration {
 
             $table->string('name', 100);
 
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('animal_id')->constrained()->restrictOnDelete();
             $table->foreignId('currency_id')->constrained()->restrictOnDelete();
             
-            $table->string('description')->nullable()->max(255);
+            $table->string('description', 255)->nullable();
 
             $table->timestamps();
         });
